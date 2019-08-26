@@ -24,14 +24,28 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="342dp"
-        android:layout_height="354dp"
+        android:layout_width="match_parent"
+        android:layout_height="426dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="162dp"
-        app:srcCompat="@mipmap/school2" />
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="90dp"
+        app:srcCompat="@mipmap/school2"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/textViewTest"
+        android:layout_width="244dp"
+        android:layout_height="68dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="147dp"
+        android:layout_marginLeft="147dp"
+        android:layout_marginBottom="39dp"
+        android:text="TextView"
+        android:textSize="30sp" />
 
 </RelativeLayout>
