@@ -13,11 +13,16 @@ import android.widget.TextView;
 public class slideAdapter2 extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
-    private Integer[] images = {R.mipmap.safe,R.mipmap.b3,R.mipmap.b4};
+    private Integer[] images = {R.mipmap.staysafe1,R.mipmap.staysafe2,R.mipmap.staysafe3};
+    private String[] slide_subtitle = {
+            "Your Body",
+            "Good Touch",
+            "Bad Touch"
+    };
     private String[] slide_desc = {
-            "Step 1",
-            "Step 2",
-            "Step 3"
+            "Your Body belongs to you, from head to toes you are the Boss, you have the power to say “NO”",
+            "Hugging, patting on your back or holding your hands to make you feel safe.",
+            "Touches you on the places you don’t want to be touched, you should tell someone you trust straight away."
     };
 
     public slideAdapter2(Context context) {
@@ -42,9 +47,11 @@ public class slideAdapter2 extends PagerAdapter {
                 ;
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         TextView sliedDescription = (TextView) view.findViewById(R.id.slide_desc);
+        TextView sliedSlide = (TextView) view.findViewById(R.id.slide_subtitle);
 
         imageView.setImageResource(images[position]);
         sliedDescription.setText(slide_desc[position]);
+        sliedSlide.setText(slide_subtitle[position]);
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);
