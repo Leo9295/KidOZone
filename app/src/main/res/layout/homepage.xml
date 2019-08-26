@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/background4">
+    android:background="@mipmap/background1">
+
 
     <Button
         android:id="@+id/button"
@@ -14,38 +15,27 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="49dp"
-        android:layout_marginLeft="49dp"
-        android:layout_marginTop="492dp"
-        android:background="@android:color/transparent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="538dp"
+        android:background="@drawable/button_style5"
         android:text="School Life"
+        android:textColor="@color/colorWhite"
         android:textSize="24sp" />
-
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="match_parent"
-        android:layout_height="426dp"
+        android:layout_width="363dp"
+        android:layout_height="387dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="90dp"
-        app:srcCompat="@mipmap/school2"
-        android:scaleType="fitXY"/>
-
-    <TextView
-        android:id="@+id/textViewTest"
-        android:layout_width="244dp"
-        android:layout_height="68dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="147dp"
-        android:layout_marginLeft="147dp"
-        android:layout_marginBottom="39dp"
-        android:text="TextView"
-        android:textSize="30sp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="131dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@mipmap/school11" />
 
 </RelativeLayout>

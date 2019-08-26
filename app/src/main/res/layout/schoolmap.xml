@@ -18,7 +18,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
-        app:srcCompat="@mipmap/map" />
+        app:srcCompat="@mipmap/schoolmap" />
 
     <requestFocus
         android:layout_width="wrap_content"
@@ -32,15 +32,16 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
+        android:layout_width="321dp"
+        android:layout_height="79dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginBottom="148dp"
-        android:background="@android:color/transparent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginBottom="107dp"
+        android:background="@drawable/button_style5"
         android:text="Story Board"
         android:textColor="@android:color/background_light"
         android:textSize="24sp" />
