@@ -13,11 +13,14 @@ import android.widget.TextView;
 public class slideAdapter1 extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
-    private Integer[] images = {R.mipmap.b2,R.mipmap.b3,R.mipmap.b4};
+    private Integer[] images = {R.mipmap.askinghelp1,R.mipmap.askinghelp2};
+    private String[] slide_subtitle = {
+            "Whom to ask for help ?",
+            "What approach to use ?",
+    };
     private String[] slide_desc = {
-            "Step 1",
-            "Step 2",
-            "Step 3"
+            "You might be confused about whom to approach for help, call a person you trust and share it with them.",
+            "Sometimes you might hesitate to ask for help !! Talk to someone you trust and share your concerns.",
     };
 
     public slideAdapter1(Context context) {
@@ -42,9 +45,11 @@ public class slideAdapter1 extends PagerAdapter {
                 ;
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         TextView sliedDescription = (TextView) view.findViewById(R.id.slide_desc);
+        TextView sliedSlide = (TextView) view.findViewById(R.id.slide_subtitle);
 
         imageView.setImageResource(images[position]);
         sliedDescription.setText(slide_desc[position]);
+        sliedSlide.setText(slide_subtitle[position]);
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);

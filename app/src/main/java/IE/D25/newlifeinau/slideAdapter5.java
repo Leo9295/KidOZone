@@ -13,11 +13,18 @@ import android.widget.TextView;
 public class slideAdapter5 extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
-    private Integer[] images = {R.mipmap.friend,R.mipmap.b3,R.mipmap.b4};
+    private Integer[] images = {R.mipmap.makefriend1,R.mipmap.makefriend2,R.mipmap.makefriend3,R.mipmap.makefriend4};
+    private String[] slide_subtitle = {
+            "How to make new friends",
+            "Getting Involved",
+            "Getting Along",
+            "Common Interests"
+    };
     private String[] slide_desc = {
-            "Step 1",
-            "Step 2",
-            "Step 3"
+            "Make new friends by initiating the conversation. Smile when you greet them",
+            "Involve yourself in all fun activities, talk to everyone and be approachable.",
+            "Help them in their work and compliment them to get along. ",
+            "Try to find the common interests between you both and talk about it"
     };
 
     public slideAdapter5(Context context) {
@@ -42,9 +49,11 @@ public class slideAdapter5 extends PagerAdapter {
                 ;
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         TextView sliedDescription = (TextView) view.findViewById(R.id.slide_desc);
+        TextView sliedSlide = (TextView) view.findViewById(R.id.slide_subtitle);
 
         imageView.setImageResource(images[position]);
         sliedDescription.setText(slide_desc[position]);
+        sliedSlide.setText(slide_subtitle[position]);
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);
