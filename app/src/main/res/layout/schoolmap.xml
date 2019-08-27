@@ -8,27 +8,76 @@
     android:screenOrientation="landscape"
     android:background="@mipmap/background1">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="609dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="0dp"
-        app:srcCompat="@mipmap/schoolmap" />
-
-    <requestFocus
+    <TextView
+        android:id="@+id/distance2School1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="151dp"
-        android:layout_marginLeft="151dp"
-        android:layout_marginBottom="157dp" />
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="232dp"
+        android:layout_marginLeft="232dp"
+        android:layout_marginTop="288dp"
+        android:text="TextView"
+        android:textColor="#FF9800"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/distance2School2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="378dp"
+        android:text="TextView"
+        android:textColor="#FF9800"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/schoolName2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="261dp"
+        android:layout_marginRight="261dp"
+        android:autoText="false"
+        android:editable="false"
+        android:gravity="center"
+        android:maxLength="150"
+        android:maxLines="2"
+        android:text="TextView"
+        android:textColor="#4CAF50"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/schoolName1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="171dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:autoText="false"
+        android:editable="false"
+        android:gravity="center"
+        android:maxLength="150"
+        android:maxLines="2"
+        android:text="TextView"
+        android:textColor="#00BCD4"
+        android:textSize="20sp"
+        android:textStyle="normal" />
 
     <Button
         android:id="@+id/button2"
@@ -45,5 +94,27 @@
         android:text="Story Board"
         android:textColor="@android:color/background_light"
         android:textSize="24sp" />
+
+    <requestFocus
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="151dp"
+        android:layout_marginLeft="151dp"
+        android:layout_marginBottom="157dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="609dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        app:srcCompat="@mipmap/schoolmap" />
 
 </RelativeLayout>

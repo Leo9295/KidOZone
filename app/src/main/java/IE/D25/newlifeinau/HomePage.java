@@ -36,6 +36,9 @@ import java.util.List;
 
 public class HomePage extends AppCompatActivity {
 
+    String userSuburb;
+    String userLat;
+    String userLon;
     Context context = HomePage.this;
 
     @Override
@@ -46,17 +49,21 @@ public class HomePage extends AppCompatActivity {
 
         Button shcoolLife = (Button) findViewById(R.id.button);
 
+        ExternalIP externalIP= new ExternalIP();
+        externalIP.execute();
+
         shcoolLife.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomePage.this, SchoolMap.class);
+                Bundle currentUserInfo = new Bundle();
+                currentUserInfo.putString("userSuburb", userSuburb);
+                currentUserInfo.putString("userLat", userLat);
+                currentUserInfo.putString("userLon", userLon);
+                intent.putExtras(currentUserInfo);
                 startActivity(intent);
             }
         });
-
-       ExternalIP externalIP= new ExternalIP();
-       externalIP.execute();
-
     }
 
 
@@ -93,6 +100,15 @@ public class HomePage extends AppCompatActivity {
                 Toast.makeText(HomePage.this, "Only for Australia user", Toast.LENGTH_SHORT).show();
                 System.exit(0);
             }
+
+            userSuburb = resultList.get(1);
+            userLat = resultList.get(2);
+            userLon = resultList.get(3);
+//            Bundle currentUserInfo = new Bundle();
+//            currentUserInfo.putString("userSuburb", resultList.get(1));
+//            currentUserInfo.putString("userLat", resultList.get(2));
+//            currentUserInfo.putString("userLon", resultList.get(3));
+//            getIntent().putExtras(currentUserInfo);
         }
     }
 

@@ -40,20 +40,28 @@ public class IpAPI {
         List<String> result1 = new ArrayList<>();
         String country = null;
         String surburb = null;
+        String lat = null;
+        String lon = null;
         try {
             JSONObject jsonObject = new JSONObject(result);
             String status = jsonObject.getString("status");
             if (status.equals("success")) {
                 country = jsonObject.getString("country");
                 surburb = jsonObject.getString("city");
+                lat = jsonObject.getString("lat");
+                lon = jsonObject.getString("lon");
             }
         } catch (Exception e) {
             e.printStackTrace();
             country = "Null1";
             surburb = "Null1";
+            lat = "Null1";
+            lon = "Null1";
         }
         result1.add(country);
         result1.add(surburb);
+        result1.add(lat);
+        result1.add(lon);
         return result1;
     }
 
