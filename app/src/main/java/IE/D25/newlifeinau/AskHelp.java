@@ -1,11 +1,24 @@
 package IE.D25.newlifeinau;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
+import android.view.Gravity;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,6 +30,7 @@ public class AskHelp extends AppCompatActivity {
     LinearLayout sliderDots;
     private int dotCounts;
     private ImageView[] dots;
+    private MediaPlayer mp = new MediaPlayer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +72,63 @@ public class AskHelp extends AppCompatActivity {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new AskHelp.MyTimerTask(), 6000, 6000);
 
+
+        Button quiz = (Button) findViewById(R.id.quiz);
+        quiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
+            }
+        });
+
     }
+
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.mipmap.school);
+        builder.setTitle("      Correct or False?");
+        builder.setMessage("          Teacher can help you in school.");
+        builder.setPositiveButton("Correct",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Display display = getWindowManager().getDefaultDisplay();
+                        int height = display.getHeight();
+                        Toast toast = Toast.makeText(AskHelp.this, "Great!", Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.TOP, 0, 5 * (height / 8));
+                        toast.show();
+                        MediaPlayer mp = MediaPlayer.create(AskHelp.this, R.raw.great);
+                        mp.start();
+                    }
+                });
+        builder.setNeutralButton("Error", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Display display = getWindowManager().getDefaultDisplay();
+                int height = display.getHeight();
+                Toast toast = Toast.makeText(AskHelp.this, "No, ask help to teacher.", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP, 0, 5 * (height / 8));
+                toast.show();
+                MediaPlayer mp = MediaPlayer.create(AskHelp.this, R.raw.tryagain);
+                mp.start();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        Window dialogWindow = dialog.getWindow();
+        WindowManager m = getWindowManager();
+        Display d = m.getDefaultDisplay();
+        WindowManager.LayoutParams p = dialogWindow.getAttributes();
+
+        p.gravity = Gravity.CENTER;
+
+        p.alpha = 0.8f;
+        dialogWindow.setAttributes(p);
+
+    }
+
 
     private class MyTimerTask extends TimerTask {
         @Override
@@ -77,4 +147,6 @@ public class AskHelp extends AppCompatActivity {
             });
         }
     }
+
+
 }
