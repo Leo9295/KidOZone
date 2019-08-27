@@ -83,9 +83,9 @@ public class WantFitIn extends AppCompatActivity {
     private void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(R.mipmap.school);
-        builder.setTitle("      Correct or False?");
+        builder.setTitle("      True or False?");
         builder.setMessage("          Play with other kids.");
-        builder.setPositiveButton("Correct",
+        builder.setPositiveButton("True",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -98,7 +98,7 @@ public class WantFitIn extends AppCompatActivity {
                         mp.start();
                     }
                 });
-        builder.setNeutralButton("Error", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("False", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Display display = getWindowManager().getDefaultDisplay();

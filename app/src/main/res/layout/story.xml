@@ -58,7 +58,7 @@
         android:layout_marginLeft="219dp"
         android:layout_marginTop="380dp"
         android:background="@drawable/button_style6"
-        android:text="Packing my Lunchbox"
+        android:text="My Lunchbox"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
         android:textSize="14sp" />

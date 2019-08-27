@@ -83,9 +83,9 @@ public class NoBullying extends AppCompatActivity {
     private void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(R.mipmap.school);
-        builder.setTitle("      Correct or False?");
-        builder.setMessage("          Say no to bullying.");
-        builder.setPositiveButton("Correct",
+        builder.setTitle("      True or False?");
+        builder.setMessage("          Say NO to bullying.");
+        builder.setPositiveButton("True",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -98,7 +98,7 @@ public class NoBullying extends AppCompatActivity {
                         mp.start();
                     }
                 });
-        builder.setNeutralButton("Error", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("False", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Display display = getWindowManager().getDefaultDisplay();

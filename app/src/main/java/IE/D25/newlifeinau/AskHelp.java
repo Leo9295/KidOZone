@@ -87,9 +87,9 @@ public class AskHelp extends AppCompatActivity {
     private void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(R.mipmap.school);
-        builder.setTitle("      Correct or False?");
-        builder.setMessage("          Teacher can help you in school.");
-        builder.setPositiveButton("Correct",
+        builder.setTitle("      True or False?");
+        builder.setMessage("          You can ask Teacher for Help?");
+        builder.setPositiveButton("True",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -102,7 +102,7 @@ public class AskHelp extends AppCompatActivity {
                         mp.start();
                     }
                 });
-        builder.setNeutralButton("Error", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("False", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Display display = getWindowManager().getDefaultDisplay();

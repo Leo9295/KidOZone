@@ -83,9 +83,9 @@ public class PackageLunch extends AppCompatActivity {
     private void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(R.mipmap.school);
-        builder.setTitle("      Correct or False?");
-        builder.setMessage("          Package lunch to school.");
-        builder.setPositiveButton("Correct",
+        builder.setTitle("      True or False?");
+        builder.setMessage("          Pack lunch to school?");
+        builder.setPositiveButton("True",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -98,12 +98,12 @@ public class PackageLunch extends AppCompatActivity {
                         mp.start();
                     }
                 });
-        builder.setNeutralButton("Error", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("False", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Display display = getWindowManager().getDefaultDisplay();
                 int height = display.getHeight();
-                Toast toast = Toast.makeText(PackageLunch.this, "No, prepare your lunch in school.", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(PackageLunch.this, "No, Pack your healthy Lunch to school", Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.TOP, 0, 5 * (height / 8));
                 toast.show();
                 MediaPlayer mp = MediaPlayer.create(PackageLunch.this, R.raw.tryagain);

@@ -83,22 +83,22 @@ public class StaySafe extends AppCompatActivity {
     private void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(R.mipmap.school);
-        builder.setTitle("      Correct or False?");
-        builder.setMessage("          Do not need stay in safe place.");
-        builder.setPositiveButton("Correct",
+        builder.setTitle("      True or False?");
+        builder.setMessage("          School is a safe Place?");
+        builder.setPositiveButton("False",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Display display = getWindowManager().getDefaultDisplay();
                         int height = display.getHeight();
-                        Toast toast = Toast.makeText(StaySafe.this, "No, keep safe in school ", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(StaySafe.this, "No, School is Safe ", Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.TOP, 0, 5 * (height / 8));
                         toast.show();
                         MediaPlayer mp = MediaPlayer.create(StaySafe.this, R.raw.tryagain);
                         mp.start();
                     }
                 });
-        builder.setNeutralButton("Error", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("True", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Display display = getWindowManager().getDefaultDisplay();

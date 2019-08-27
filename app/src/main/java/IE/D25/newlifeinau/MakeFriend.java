@@ -85,22 +85,22 @@ public class MakeFriend extends AppCompatActivity {
     private void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(R.mipmap.school);
-        builder.setTitle("      Correct or False?");
-        builder.setMessage("          I do not need friend.");
-        builder.setPositiveButton("Correct",
+        builder.setTitle("      True or False?");
+        builder.setMessage("          I don't need a friend.");
+        builder.setPositiveButton("True",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Display display = getWindowManager().getDefaultDisplay();
                         int height = display.getHeight();
-                        Toast toast = Toast.makeText(MakeFriend.this, "Friend can help you.", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(MakeFriend.this, "Friends can help you.", Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.TOP, 0, 5 * (height / 8));
                         toast.show();
                         MediaPlayer mp = MediaPlayer.create(MakeFriend.this, R.raw.tryagain);
                         mp.start();
                     }
                 });
-        builder.setNeutralButton("Error", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("False", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Display display = getWindowManager().getDefaultDisplay();
