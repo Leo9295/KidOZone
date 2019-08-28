@@ -1,6 +1,7 @@
 package IE.D25.newlifeinau;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -40,10 +41,19 @@ public class SchoolMap  extends AppCompatActivity {
         distance2School2.bringToFront();
 
         //Bundle userInfoBundle = this.getIntent().getExtras();
-        String currentUserSuburb = userInfoBundle.getString("userSuburb");
-        if(userInfoBundle.getString("userLat").equals("Null1") && userInfoBundle.getString("userLon").equals("Null1")) {
-            userLat = Double.parseDouble(userInfoBundle.getString("userLat"));
-            userLon = Double.parseDouble(userInfoBundle.getString("userLon"));
+
+        SharedPreferences sp = getSharedPreferences("user", MODE_PRIVATE);
+
+        String currentUserSuburb = sp.getString("userSuburb", "");
+        String d = sp.getString("userLat", null);
+        String w = sp.getString("userLon", null);
+
+//        String currentUserSuburb = userInfoBundle.getString("userSuburb");
+//        String d = userInfoBundle.getString("userLat");
+//        String w = userInfoBundle.getString("userLon");
+        if((!d.equals(null)) && (!w.equals(null))) {
+            userLat = Double.parseDouble(d);
+            userLon = Double.parseDouble(w);
         } else {
             userLat = 0.0;
             userLon = 0.0;
@@ -71,13 +81,15 @@ public class SchoolMap  extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             List<SchoolInfo> schoolList = RestClient.parseSchoolJson(result);
-            if (schoolList.size() >= 1) {
+            if (schoolList.size() == 1) {
                 schoolName1.setText(schoolList.get(0).getSchoolName());
-//                schoolName2.setText(schoolList.get(1).getSchoolName());
                 schoolName2.setText("");
-            } else {
+            } else if (schoolList.size() >= 2) {
                 schoolName1.setText(schoolList.get(0).getSchoolName());
                 schoolName2.setText(schoolList.get(1).getSchoolName());
+            } else {
+                schoolName1.setText("");
+                schoolName2.setText("");
             }
 
             if(userLat != 0.0 || userLon != 0.0) {
@@ -85,11 +97,19 @@ public class SchoolMap  extends AppCompatActivity {
 
                 SystemUtil util = new SystemUtil();
 
-                distance2School1.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(0).getSchoolCoordinate()) + "km");
-                if (schoolList.size() >= 1)
-                    distance2School2.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(1).getSchoolCoordinate()) + "km");
-                else
+                if (schoolList.size() == 1) {
+                    distance2School1.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(0).getSchoolCoordinate()) + "km");
                     distance2School2.setText("");
+                } else if (schoolList.size() >= 2) {
+                    distance2School1.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(0).getSchoolCoordinate()) + "km");
+                    distance2School2.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(1).getSchoolCoordinate()) + "km");
+                } else {
+                    distance2School1.setText("");
+                    distance2School2.setText("");
+
+                    Toast toast = Toast.makeText(SchoolMap.this, "Oops..Looks like there is no School around.", Toast.LENGTH_LONG);
+                    toast.show();
+                }
             } else {
                 distance2School1.setText("");
                 distance2School2.setText("");
