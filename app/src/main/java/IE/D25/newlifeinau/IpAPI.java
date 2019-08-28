@@ -60,8 +60,14 @@ public class IpAPI {
         }
         result1.add(country);
         result1.add(surburb);
-        result1.add(lat);
-        result1.add(lon);
+        if(!lat.equals(null))
+            result1.add(lat);
+        else
+            result1.add("Null1");
+        if(!lon.equals(null))
+            result1.add(lon);
+        else
+            result1.add("Null1");
         return result1;
     }
 
