@@ -41,12 +41,20 @@ public class SchoolMap  extends AppCompatActivity {
 
         //Bundle userInfoBundle = this.getIntent().getExtras();
         String currentUserSuburb = userInfoBundle.getString("userSuburb");
-        if(userInfoBundle.getString("userLat").equals("Null1") && userInfoBundle.getString("userLon").equals("Null1")) {
-            userLat = Double.parseDouble(userInfoBundle.getString("userLat"));
-            userLon = Double.parseDouble(userInfoBundle.getString("userLon"));
-        } else {
-            userLat = 0.0;
-            userLon = 0.0;
+        String userLat1 = userInfoBundle.getString("userLat");
+        String userLon1 = userInfoBundle.getString("userLon");
+        try {
+            if (!userLat1.isEmpty() && !userLon1.isEmpty()) {
+                userLat = Double.parseDouble(userInfoBundle.getString("userLat"));
+                userLon = Double.parseDouble(userInfoBundle.getString("userLon"));
+            } else {
+                userLat = 0.0;
+                userLon = 0.0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast toast = Toast.makeText(SchoolMap.this, "Something goes wrong! please try it later~", Toast.LENGTH_LONG);
+            toast.show();
         }
 
         SchoolInfoAchieve schoolInfoAchieve = new SchoolInfoAchieve();
@@ -71,32 +79,25 @@ public class SchoolMap  extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result){
             List<SchoolInfo> schoolList = RestClient.parseSchoolJson(result);
-            if (schoolList.size() >= 1) {
+            SystemUtil util = new SystemUtil();
+            Coordinate currentCoordinate = new Coordinate(userLat, userLon);
+            if (schoolList.size() == 1) {
                 schoolName1.setText(schoolList.get(0).getSchoolName());
-//                schoolName2.setText(schoolList.get(1).getSchoolName());
-                schoolName2.setText("");
-            } else {
-                schoolName1.setText(schoolList.get(0).getSchoolName());
-                schoolName2.setText(schoolList.get(1).getSchoolName());
-            }
-
-            if(userLat != 0.0 || userLon != 0.0) {
-                Coordinate currentCoordinate = new Coordinate(userLat, userLon);
-
-                SystemUtil util = new SystemUtil();
-
                 distance2School1.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(0).getSchoolCoordinate()) + "km");
-                if (schoolList.size() >= 1)
-                    distance2School2.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(1).getSchoolCoordinate()) + "km");
-                else
-                    distance2School2.setText("");
-            } else {
+                schoolName2.setText("");
+                distance2School2.setText("");
+            } else if(schoolList.size() == 0) {
+                schoolName1.setText("");
+                schoolName2.setText("");
                 distance2School1.setText("");
                 distance2School2.setText("");
-
                 Toast toast = Toast.makeText(SchoolMap.this, "We can't get your location information, Please try later.", Toast.LENGTH_LONG);
                 toast.show();
-
+            }else {
+                schoolName1.setText(schoolList.get(0).getSchoolName());
+                distance2School1.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(0).getSchoolCoordinate()) + "km");
+                schoolName2.setText(schoolList.get(1).getSchoolName());
+                distance2School2.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(1).getSchoolCoordinate()) + "km");
             }
         }
     }

@@ -53,10 +53,10 @@ public class IpAPI {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            country = "Null1";
-            surburb = "Null1";
-            lat = "Null1";
-            lon = "Null1";
+            country = null;
+            surburb = null;
+            lat = null;
+            lon = null;
         }
         result1.add(country);
         result1.add(surburb);
