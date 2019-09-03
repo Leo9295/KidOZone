@@ -46,11 +46,11 @@ public class SchoolMap  extends AppCompatActivity {
 
         String currentUserSuburb = sp.getString("userSuburb", "");
         String d = sp.getString("userLat", null);
-        String w = sp.getString("userLon", null);
+       String w = sp.getString("userLon", null);
 
-//        String currentUserSuburb = userInfoBundle.getString("userSuburb");
-//        String d = userInfoBundle.getString("userLat");
-//        String w = userInfoBundle.getString("userLon");
+        String currentUserSuburb = userInfoBundle.getString("userSuburb");
+        String d = userInfoBundle.getString("userLat");
+        String w = userInfoBundle.getString("userLon");
         if((!d.equals(null)) && (!w.equals(null))) {
             userLat = Double.parseDouble(d);
             userLon = Double.parseDouble(w);
@@ -94,16 +94,14 @@ public class SchoolMap  extends AppCompatActivity {
 
             if(userLat != 0.0 || userLon != 0.0) {
                 Coordinate currentCoordinate = new Coordinate(userLat, userLon);
-
-                SystemUtil util = new SystemUtil();
-
+               SystemUtil util = new SystemUtil();
                 if (schoolList.size() == 1) {
                     distance2School1.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(0).getSchoolCoordinate()) + "km");
                     distance2School2.setText("");
                 } else if (schoolList.size() >= 2) {
                     distance2School1.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(0).getSchoolCoordinate()) + "km");
-                    distance2School2.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(1).getSchoolCoordinate()) + "km");
-                } else {
+                  distance2School2.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(1).getSchoolCoordinate()) + "km");
+               } else {
                     distance2School1.setText("");
                     distance2School2.setText("");
 
@@ -113,10 +111,13 @@ public class SchoolMap  extends AppCompatActivity {
             } else {
                 distance2School1.setText("");
                 distance2School2.setText("");
-
                 Toast toast = Toast.makeText(SchoolMap.this, "We can't get your location information, Please try later.", Toast.LENGTH_LONG);
                 toast.show();
-
+            }else {
+                schoolName1.setText(schoolList.get(0).getSchoolName());
+                distance2School1.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(0).getSchoolCoordinate()) + "km");
+                schoolName2.setText(schoolList.get(1).getSchoolName());
+                distance2School2.setText(util.distance4UserAndSchoolCal(currentCoordinate, schoolList.get(1).getSchoolCoordinate()) + "km");
             }
         }
     }

@@ -79,6 +79,15 @@ public class MakeFriend extends AppCompatActivity {
             }
         });
 
+        Button back = (Button) findViewById(R.id.backButton);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MakeFriend.this, Story.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 

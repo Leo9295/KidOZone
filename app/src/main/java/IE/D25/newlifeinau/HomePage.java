@@ -47,7 +47,6 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
 
-
         Button shcoolLife = (Button) findViewById(R.id.button);
 
         ExternalIP externalIP= new ExternalIP();
@@ -102,15 +101,21 @@ public class HomePage extends AppCompatActivity {
 
         protected void onPostExecute(String result) {
 
-            List<String> resultList = IpAPI.getInf(result);
-            if(!resultList.get(0).equals("Australia")) {
-                Toast.makeText(HomePage.this, "Only for Australia user", Toast.LENGTH_SHORT).show();
-                System.exit(0);
-            }
+            try {
+                List<String> resultList = IpAPI.getInf(result);
+                if (!resultList.get(0).equals("Australia")) {
+                    Toast.makeText(HomePage.this, "Only for Australia user", Toast.LENGTH_SHORT).show();
+                    System.exit(0);
+                }
 
-            userSuburb = resultList.get(1);
-            userLat = resultList.get(2);
-            userLon = resultList.get(3);
+                userSuburb = resultList.get(1);
+                userLat = resultList.get(2);
+                userLon = resultList.get(3);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast toast = Toast.makeText(HomePage.this, "No Internet connection detected, Please try later.", Toast.LENGTH_LONG);
+                toast.show();
+            }
 //            Bundle currentUserInfo = new Bundle();
 //            currentUserInfo.putString("userSuburb", resultList.get(1));
 //            currentUserInfo.putString("userLat", resultList.get(2));

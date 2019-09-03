@@ -20,6 +20,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -81,6 +84,15 @@ public class AskHelp extends AppCompatActivity {
             }
         });
 
+        Button back = (Button) findViewById(R.id.backButton);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AskHelp.this, Story.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -88,7 +100,12 @@ public class AskHelp extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(R.mipmap.school);
         builder.setTitle("      True or False?");
-        builder.setMessage("          You can ask Teacher for Help?");
+        List<String> quizList = new ArrayList<String>();
+        quizList.add("          You can ask Teacher for Help?");
+        quizList.add("test");
+        Random rand = new Random();
+        int i = rand.nextInt(2);
+        builder.setMessage(quizList.get(i));
         builder.setPositiveButton("True",
                 new DialogInterface.OnClickListener() {
                     @Override
