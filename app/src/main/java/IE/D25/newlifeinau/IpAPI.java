@@ -58,16 +58,22 @@ public class IpAPI {
             lat = null;
             lon = null;
         }
-        result1.add(country);
-        result1.add(surburb);
-        if(!lat.equals(null))
+        if (!country.equals(null))
+            result1.add(country);
+        else
+            result1.add(null);
+        if (!surburb.equals(null))
+            result1.add(surburb);
+        else
+            result1.add(null);
+        if (!lat.equals(null))
             result1.add(lat);
         else
-            result1.add("Null1");
-        if(!lon.equals(null))
+            result1.add(null);
+        if (!lon.equals(null))
             result1.add(lon);
         else
-            result1.add("Null1");
+            result1.add(null);
         return result1;
     }
 

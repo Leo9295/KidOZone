@@ -3,6 +3,7 @@ package IE.D25.newlifeinau;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -55,11 +56,17 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomePage.this, SchoolMap.class);
-                Bundle currentUserInfo = new Bundle();
-                currentUserInfo.putString("userSuburb", userSuburb);
-                currentUserInfo.putString("userLat", userLat);
-                currentUserInfo.putString("userLon", userLon);
-                intent.putExtras(currentUserInfo);
+//                Bundle currentUserInfo = new Bundle();
+//                currentUserInfo.clear();
+                SharedPreferences.Editor editor = getSharedPreferences("user", MODE_PRIVATE).edit();
+                editor.putString("userSuburb", userSuburb);
+                editor.putString("userLat", userLat);
+                editor.putString("userLon", userLon);
+                editor.commit();
+//                currentUserInfo.putString("userSuburb", userSuburb);
+//                currentUserInfo.putString("userLat", userLat);
+//                currentUserInfo.putString("userLat", userLat);
+//                intent.putExtras(currentUserInfo);
                 startActivity(intent);
             }
         });
