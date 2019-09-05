@@ -19,6 +19,6 @@
         android:layout_marginStart="57dp"
         android:layout_marginLeft="57dp"
         android:layout_marginTop="187dp"
-        app:srcCompat="@mipmap/logo" />
+        app:srcCompat="@mipmap/welcomepage" />
 
 </RelativeLayout>
